@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Fantasy Coach - Draft</title>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/draftapp.js"></script>
+
+        <link href="css/redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+        <link href="css/reset.css" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    </script>
+    <div id="mainDiv">
+
+        <header>FANTASY COACH DRAFT PROTOTYPE</header>
+        <div id="leftCol">
+            <div id="miniclient">
+                <form>
+                    <h1>TEST THE API </h1>
+                    <div>
+                        request: <input type="text" name="request" id="requestPart"  value="team/allteams" />
+                    </div>				
+                    <div>
+                        <input type="button" id="buttonReq" name="sendrequest" value="Send Request" onclick="mc.sendRequest();
+                                return false;"  />
+                    </div>
+                </form>		
+            </div>
+			<br/>
+			<h2>Response</h2>
+            <div id="responseBody"></div>
+        </div>
+        <div id="rightCol">API Services		
+			Retrieve Teams: Fetches teams within the league <br/>
+			<b>Route: team/allteams </b> <br/>
+			<br/>
+			Team Players: Fetches roster given teamId  <br/>
+			<b>team/userTeamPlayers/{teamId}  </b>   <br/>
+			<br/>
+			Free Agents: Given a game position, retrieves available free agents, available positions :  ('QB','RB','WR', 'TE','K','D/St')<br/>
+			<b>Route: roster/freeAgentsByPosition/{position} </b> <br/>
+			<br/>
+			Add Player : Adds a freeagent to a team , if status = 1 , player is added to the active roster, if status = 0 player is added to the active roster, spot ( 1-8 ) defines the spot within either active or roster <br/>
+			<b>Route: team/addplayer/0/{playerid}/{status}/{teamId}/{spot}/0 </b>  <br/>
+			<br/>
+			Remove Player: Removes a player from team roster<br/>
+			<b>Route: roster/removePlayer/{leagueId}/{userId}/{playerId} </b> <br/>
+        </div>
+        
+        <footer>This is a footer</footer>
+    </div>
+</body>
+</html>

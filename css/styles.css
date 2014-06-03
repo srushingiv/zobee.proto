@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/* CSS Document */
+
+article, section, aside, hgroup, nav, header, footer, figure, figcaption {
+display: block;
+}
+
+#mainDiv {
+width: 960px;
+background-color: #f3f2f5;
+margin-left:auto;
+margin-right:auto;
+}
+
+header {
+height:50px;
+	padding: 10px;
+	background-color: #c8c7ca;
+}
+
+nav {
+width:960px;
+}
+
+#leftCol {
+float: left;
+width:600px;
+	padding: 20px;
+	background-color: #e2e2e2;
+}
+
+#rightcol {
+float: left;
+width: 280px;
+background-color: #d0d0d0;
+padding: 20px;
+}
+
+footer {
+clear:both;
+height: 10px;
+background-color: #c3c3c3;
+	padding: 10px;
+}
