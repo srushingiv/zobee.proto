@@ -42,3 +42,7 @@ height: 10px;
 background-color: #c3c3c3;
 	padding: 10px;
 }
+
+#team-list .team-item {
+  margin:10px 0;
+}

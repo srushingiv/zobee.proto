@@ -61,6 +61,40 @@
       sendRequest('team/addplayer/0/'+playerid+'/'+(active?1:0)+'/'+teamid+'/'+spot+'/0',callback);
     };
 
+    var modelLoaded = function() {
+      this.model.readyCount += 1;
+      if (this.model.readyCount >= positions.length + 1) {
+        // for debug purposes only, show us what got loaded.
+        this.model.ready = true;
+        console.log(draftapp.model);
+        $(document).trigger("draftapp.model-loaded");
+      }
+    }
+
+    /***** load data model *****/
+    var self = this;
+    this.model = { readyCount:0, ready:false };
+    this.model.currentTeam = parseInt((window.location.hash || '#0').substring(1));
+    this.getTeams(function(data) {
+      self.model.teams = data;
+      if (self.model.currentTeam == 0) self.model.currentTeam = data[0].id;
+      self.getTeamPlayers(self.model.currentTeam,function(data) {
+        self.model.teamPlayers = data
+        modelLoaded.call(self);
+      });
+    });
+    this.model.freeAgents = {};
+    $.each(positions,function(i, p) {
+      self.getFreeAgentsByPosition(p.abbrev,function(data) {
+        self.model.freeAgents[p.abbrev] = data;
+        modelLoaded.call(self);
+      });
+    });
+
   }) ();
+
+  $(document).ready(function() {
+    $('#team-list').teamlist();
+  })
 
 })(jQuery);
