@@ -4,7 +4,8 @@ $.widget("draftapp.teamlist", {
   version: "0.1",
   options: {
     selectedTeam: null,
-    title: "Team List"
+    title: "Team List",
+    disabled: false
   },
 
   _create: function() {
@@ -29,14 +30,38 @@ $.widget("draftapp.teamlist", {
   },
 
   _refreshTeams: function() {
-    var self = this, model = window.draftapp.model;
     this.contentDiv.empty();
+
+    var self = this,
+        model = window.draftapp.model,
+        list = $('<form>').appendTo(this.contentDiv);
+    this.options.selectedTeam = model.currentTeam;
+
+
     $.each(model.teams, function(i,team) { // There is no I in TEAM!! LOL
-      $('<div>').addClass('team-item ui-widget ui-corner-all ui-button-text-only')
-        .html('<span class="ui-button-text">'+team.name+'</span>')
-        .addClass(team.id == model.currentTeam ? 'ui-state-active' : 'ui-state-default')
-        .appendTo(self.contentDiv);
+      list.append($('<input type="radio" id="teamlist'+i+'" name="teamlist" value="'+team.id+'"/>'))
+        .append($('<label for="teamlist'+i+'">'+team.name+'</label>'));
     });
+
+    // mark the selected team
+    var btns = list.find('input').filter(function( index ) {
+      return $( this ).attr( "value" ) == self.options.selectedTeam;
+    }).attr( "checked", true )
+
+    // build the button UI components
+      .end().button({disabled:this.options.disabled})
+
+    // set up the button click handlers.
+    if (!this.options.disabled) {
+      btns.click(function(e) {
+        self.selectTeam(this.value);
+      });
+    }
+  },
+
+  selectTeam: function(team) {
+    this.options.selectedTeam = team;
+    $(document).trigger('draftapp.view-team-changed');
   }
 
 });

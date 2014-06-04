@@ -94,7 +94,12 @@
   }) ();
 
   $(document).ready(function() {
-    $('#team-list').teamlist();
-  })
+    $('#team-list').teamlist({disabled:true});
+  });
+
+  // Log events that should eventually trigger view changes.
+  $(document).on('draftapp.view-team-changed', function() {
+    console.log('Should change the team being viewed')
+  });
 
 })(jQuery);
