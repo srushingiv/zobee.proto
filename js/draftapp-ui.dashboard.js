@@ -27,12 +27,45 @@ $.widget("draftapp.dashboard", {
     this.contentDiv = $( '<div class="draftapp-panel-content ui-widget-content"></div>' )
       .appendTo( this.element );
 
+    var teamP = $('<p>Team Drafting:&nbsp;</p>').appendTo(this.contentDiv);
+
+    this.teamNameSpan = $('<span class="draftapp-dashboard-teamname">').appendTo(teamP);
+
+    this.progressBar = $('<div class="draftapp-progressbar">').appendTo(this.contentDiv);
+    this.progressLabel = $('<div class="draftapp-progress-label">Loading...</div>').appendTo(this.progressBar);
+
+    this.progressBar.progressbar({ value:false })
+
+
+
     var self = this;
 
-    //$(document).on("draftapp.model-loaded",function() { self._refreshDisplay(); });
-    //if (window.draftapp && window.draftapp.model && window.draftapp.model.ready === true)
-    //  this._refreshDisplay();
+    $(document).on("draftapp.model-loaded",function() { self.refresh(); });
+    if (window.draftapp && window.draftapp.model && window.draftapp.model.ready === true)
+      this.refresh();
+
+    $(document).on("draftapp.turn-beginning",function() { self.refresh(); });
+    $(document).on("draftapp.draft-ending",function() { self.refresh(); });
   },
+
+  refresh: function() {
+    var model = window.draftapp.model,
+        teamCount = model.teams.length,
+        turnIndex = window.draftapp.getTurnInRound(),
+        value = (turnIndex+(model.round * teamCount)),
+        max = model.totalRounds * teamCount,
+        html = 'Turn '+(turnIndex+1)+' of '+teamCount+' in Round '+(model.round+1)+' of '+model.totalRounds;
+
+    if (value >= max) {
+      this.progressBar.progressbar( 'value', 100);
+      this.progressLabel.html('Draft Complete');
+      this.teamNameSpan.text('N/A');
+    } else {
+      this.progressBar.progressbar( 'value', value * 100.0 / max);
+      this.progressLabel.html(html);
+      this.teamNameSpan.text(model.teams[turnIndex].name);
+    }
+  }
 
 
 

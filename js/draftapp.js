@@ -111,13 +111,10 @@
     };
 
     this.nextTurn = function() {
-      if (this.model.round >= 16) return false;
+      if (this.model.round >= this.model.totalRounds) return false;
 
       var self = this,
-        index = this.model.teams.reduce(function(acc,t,i) {
-          if (t.id == self.model.currentTeam) return i;
-          return acc;
-        },-1);
+        index = this.getTurnInRound();
 
       var nextIndex = index == -1 ? 0 : (index + 1) % this.model.teams.length;
       trigger('turn-ending');
@@ -128,16 +125,23 @@
         trigger('round-ending');
         this.model.round ++;
 
-        if (this.model.round >= 16)
+        if (this.model.round >= this.model.totalRounds)
           trigger('draft-ending');
       }
 
-      if (this.model.round < 16) {
+      if (this.model.round < this.model.totalRounds) {
         trigger('turn-beginning');
         this.changeView(this.model.currentTeam);
       }
 
       return true;
+    };
+
+    this.getTurnInRound = function() {
+      return this.model.teams.reduce(function(acc,t,i) {
+        if (t.id == self.model.currentTeam) return i;
+        return acc;
+      },-1);
     };
 
     this.changeView = function(teamid) {
@@ -166,6 +170,7 @@
       freeAgents:{},
       timeInTurn:30,
       round:0,
+      totalRounds:16, // TODO - this may need to be configurable eventually
       teamPlayers:{}
     };
     this.loadTeams(function(teamData) {
