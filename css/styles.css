@@ -105,5 +105,5 @@ background-color: #c3c3c3;
   text-align:center;
 }
 .draftapp-progressbar .ui-progressbar-value {
-  background: #dfeffc url("css/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x;
+  background: #d0e5f5 url("redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x;
 }
