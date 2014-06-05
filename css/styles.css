@@ -2,48 +2,33 @@
 /* CSS Document */
 
 article, section, aside, hgroup, nav, header, footer, figure, figcaption {
-display: block;
+  display: block;
 }
 
-#mainDiv {
-width: 960px;
-background-color: #f3f2f5;
-margin-left:auto;
-margin-right:auto;
-position:relative;
+#free-agents {
+  float:right;
+  margin:0;
+  width:30%;
 }
-
-header {
-height:50px;
-	padding: 10px;
-	background-color: #c8c7ca;
+#team-list {
+  float:left;
+  margin:0 5px 5px 0;
+  width:20%;
 }
-
-nav {
-width:960px;
+#team-list form label {
+  display: block;
+  margin:5px 0;
 }
-
-#leftCol {
-float: left;
-width:600px;
-	padding: 20px;
-	background-color: #e2e2e2;
+#wrapper {
+  position:relative;
+  width:70%;
+  top:0; left:0;
 }
-
-#rightcol {
-float: left;
-width: 280px;
-background-color: #d0d0d0;
-padding: 20px;
+#headerDiv, #mainDiv {
+  position:relative;
+  margin-right:5px; /* gutter width */
+  width:auto;
 }
-
-footer {
-clear:both;
-height: 10px;
-background-color: #c3c3c3;
-	padding: 10px;
-}
-
 
 .draftapp-panel {
   overflow: hidden;
@@ -70,17 +55,6 @@ background-color: #c3c3c3;
   padding: .5em 1em;
   background: none;
   overflow: auto;
-}
-
-#team-list {
-  float:left;
-  margin:0 5px 5px 0;
-  width:20%;
-}
-
-#team-list form label {
-  display: block;
-  margin:5px 0;
 }
 
 .draftapp-panel-content p {
