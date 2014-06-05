@@ -79,12 +79,22 @@ $.widget("draftapp.freeagents", {
           if (!window.draftapp.pick(position.short,a.id)) {
             alert('Could not add player!');
           }
-        });
+        })
+        .mouseenter(self._mouseEnterAddButton)
+        .mouseleave(self._mouseLeaveAddButton);
       } else {
         button.addClass("ui-state-disabled");
       }
     });
     this.agentTable.find('tr:odd').addClass('odd');
+  },
+
+  _mouseEnterAddButton: function(e) {
+    $(e.currentTarget).addClass('ui-state-hover');
+  },
+
+  _mouseLeaveAddButton: function(e) {
+    $(e.currentTarget).removeClass('ui-state-hover');
   }
 
 });
