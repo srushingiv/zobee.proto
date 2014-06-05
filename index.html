@@ -1,26 +1,30 @@
 <html>
-    <head>
-        <title>Fantasy Coach - Draft</title>
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="http://myjs.us/param.js"></script>
-        <script src="js/draftapp-ui.teamlist.js"></script>
-        <script src="js/draftapp.js"></script>
+  <head>
+    <title>Fantasy Coach - Draft</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="http://myjs.us/param.js"></script>
+    <script src="js/draftapp-ui.teamlist.js"></script>
+    <script src="js/draftapp-ui.dashboard.js"></script>
+    <script src="js/draftapp.js"></script>
 
-        <link href="css/redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
-        <link href="css/reset.css" rel="stylesheet" type="text/css">
-        <link href="css/styles.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-    </script>
-    <div id="mainDiv">
+    <link href="css/redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="headerDiv">
+        <div id="team-list"></div>
 
-        <header>FANTASY COACH DRAFT PROTOTYPE</header>
+        <div id="dashboard"></div>
+      </div>
+      <div id="mainDiv">
+        <div id="roster"></div>
 
-        <aside id="team-list">
-        </aside>
-
-        <footer>This is a footer</footer>
+        <div id="action-panel"></div>
+      </div>
     </div>
-</body>
+    <div id="free-agents"></div>
+  </body>
 </html>

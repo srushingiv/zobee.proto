@@ -10,6 +10,7 @@ width: 960px;
 background-color: #f3f2f5;
 margin-left:auto;
 margin-right:auto;
+position:relative;
 }
 
 header {
@@ -43,7 +44,43 @@ background-color: #c3c3c3;
 	padding: 10px;
 }
 
+
+.draftapp-panel {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding: .2em;
+  outline: 0;
+}
+.draftapp-panel .draftapp-panel-titlebar {
+  padding: .4em 1em;
+  position: relative;
+}
+.draftapp-panel .draftapp-panel-title {
+  float: left;
+  margin: .1em 0;
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.draftapp-panel .draftapp-panel-content {
+  position: relative;
+  border: 0;
+  padding: .5em 1em;
+  background: none;
+  overflow: auto;
+}
+
+#team-list {
+  float:left;
+  margin:0 5px 5px 0;
+  width:20%;
+}
+
 #team-list form label {
   display: block;
-  margin:10px 0;
+  margin:5px 0;
 }
+
+
