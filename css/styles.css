@@ -7,7 +7,7 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
 
 #free-agents {
   float:right;
-  margin:0;
+  margin-left:5px;
   width:30%;
 }
 #team-list {
@@ -22,11 +22,12 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
 #wrapper {
   position:relative;
   width:70%;
-  top:0; left:0;
+  left:0;
+  top:0;
 }
 #headerDiv, #mainDiv {
   position:relative;
-  margin-right:5px; /* gutter width */
+  right:0px; /* gutter width */
   width:auto;
 }
 
@@ -37,9 +38,16 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
   padding: .2em;
   outline: 0;
 }
-.draftapp-panel .draftapp-panel-titlebar {
+.draftapp-panel .draftapp-panel-titlebar, .draftapp-panel .draftapp-panel-subtitlebar {
   padding: .4em 1em;
   position: relative;
+}
+.draftapp-panel .draftapp-panel-subtitlebar {
+  width:auto;
+  color:inherit;
+  text-align:center;
+  background: #d0e5f5 url("redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x;
+  margin:0.5em 0;
 }
 .draftapp-panel .draftapp-panel-title {
   float: left;
@@ -81,3 +89,37 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
 .draftapp-progressbar .ui-progressbar-value {
   background: #d0e5f5 url("redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x;
 }
+
+.draftapp-freeagents-panel table {
+  width: 100%;
+}
+.draftapp-freeagents-panel table th, .draftapp-freeagents-panel table td {
+  padding:0 1em;
+  vertical-align:middle;
+  height:2.5em;
+}
+.draftapp-freeagents-panel table tbody tr {
+  border-top: 1px solid #d0e5f5;
+}
+.draftapp-freeagents-panel th .ui-icon {
+  display: inline-block;
+  position: relative;
+  top: 0.25em;
+  margin-right: 0.25em;
+}
+.draftapp-freeagents-panel table .l {
+  text-align:left;
+}
+.draftapp-freeagents-panel table .r {
+  text-align:right;
+}
+
+tr.odd {
+  background-color:#dfeffc;
+}
+
+
+.draftapp-freeagents-positions {
+  text-align:center;
+}
+

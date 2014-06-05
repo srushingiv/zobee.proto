@@ -9,7 +9,7 @@ $.widget("draftapp.teamlist", {
   },
 
   _create: function() {
-    this.element
+    this.element.empty()
       .addClass( "draftapp-panel ui-widget ui-widget-content ui-corner-all" )
       .attr({
         role: "navigation"

@@ -2,12 +2,11 @@
 
 /*
   The dashboard displays the current status of the draft. It shows:
-  1. How log remains in the current draft pick.
-  2. Progress through the entire draft.
-  3. Currently drafting team.
+  1. Progress through the entire draft.
+  2. Currently drafting team.
 
-  Future state: May want to have the ability to display the loged in player's
-  team seperately from the currently drafting player.
+  Future state:
+  1. Show how long remains in the current draft pick.
 */
 $.widget("draftapp.dashboard", {
   version: "0.1",
@@ -17,7 +16,7 @@ $.widget("draftapp.dashboard", {
   },
 
   _create: function() {
-    this.element
+    this.element.empty()
       .addClass( "draftapp-panel ui-widget ui-widget-content ui-corner-all" );
 
     this.titleDiv = $('<div class="draftapp-panel-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"></div>')
@@ -29,7 +28,7 @@ $.widget("draftapp.dashboard", {
 
     var teamP = $('<p>Team Drafting:&nbsp;</p>').appendTo(this.contentDiv);
 
-    this.teamNameSpan = $('<span class="draftapp-dashboard-teamname">').appendTo(teamP);
+    this.teamNameSpan = $('<span class="draftapp-dashboard-teamname">N/A</span>').appendTo(teamP);
 
     this.progressBar = $('<div class="draftapp-progressbar">').appendTo(this.contentDiv);
     this.progressLabel = $('<div class="draftapp-progress-label">Loading...</div>').appendTo(this.progressBar);
@@ -66,8 +65,6 @@ $.widget("draftapp.dashboard", {
       this.teamNameSpan.text(model.teams[turnIndex].name);
     }
   }
-
-
 
 });
 

@@ -2,6 +2,7 @@
   function Position(name, abbrev) {
     this.name = name;
     this.abbrev = abbrev;
+    this.short = this.abbrev.replace(/[^a-zA-Z]/,'');
   };
 
   window.draftapp = window.draftapp || new (function() {
@@ -58,7 +59,7 @@
     };
 
     this.loadFreeAgentsByPosition = function(position,callback) {
-      sendRequest('roster/freeAgentsByPosition/'+(position.replace(/[^a-zA-Z]/,'')),callback);
+      sendRequest('roster/freeAgentsByPosition/'+position,callback);
     };
 
     /*
@@ -84,6 +85,8 @@
         },-1);
       if (index == -1) return false;
 
+      if (true) return false;
+
       // validate that there is room on the team
       var spotfilled = this.model.teamPlayers[this.model.currentTeam].reduce(
         function(acc,p,i) {
@@ -92,7 +95,7 @@
       if (spotfilled) return false;
 
       // remove from free agents
-      this.model.freeAgents[position].splice(i,1);
+      this.model.freeAgents[position].splice(index,1);
 
       // add to team
       this.model.teamPlayers[this.model.currentTeam].push({
@@ -185,8 +188,8 @@
       });
     });
     $.each(positions,function(i, p) {
-      self.loadFreeAgentsByPosition(p.abbrev,function(data) {
-        self.model.freeAgents[p.abbrev] = data || [];
+      self.loadFreeAgentsByPosition(p.short,function(data) {
+        self.model.freeAgents[p.short] = data || [];
         modelLoaded.call(self);
       });
     });
@@ -199,6 +202,7 @@
   $(document).ready(function() {
     $('#team-list').teamlist();
     $('#dashboard').dashboard({title:"FANTASY COACH DRAFT TEST"});
+    $('#free-agents').freeagents();
   });
 
   // Log events that should eventually trigger view changes.
