@@ -27,7 +27,7 @@ $.widget("draftapp.freeagents", {
       .appendTo( this.element );
 
     this.positionsDiv = $('<div class="draftapp-freeagents-positions">').appendTo(this.contentDiv);
-    this.selectedPosDiv = $('<div class="draftapp-panel-subtitlebar ui-widget-header ui-corner-all ui-helper-clearfix">').appendTo(this.contentDiv);
+    this.selectedPosDiv = $('<div class="draftapp-panel-subtitlebar ui-corner-all ui-helper-clearfix">').appendTo(this.contentDiv);
     var table = $('<table><thead><tr><th class="l"><span class="ui-icon ui-icon-person"></span>Player</th><th><span class="ui-icon ui-icon-person"></span>Team</th><th class="r"><span class="ui-icon ui-icon-transferthick-e-w"></span>Add Player</th></tr></thead></table>').appendTo(this.contentDiv);
     this.agentTable = $('<tbody>').appendTo(table);
 

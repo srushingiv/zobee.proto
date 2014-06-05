@@ -48,6 +48,8 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
   text-align:center;
   background: #d0e5f5 url("redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x;
   margin:0.5em 0;
+  border: 1px solid #c5dbec;
+  font-weight:bold;
 }
 .draftapp-panel .draftapp-panel-title {
   float: left;
