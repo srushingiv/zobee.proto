@@ -1,12 +1,9 @@
 (function( $, undefined ) {
 
 /*
-  The dashboard displays the current status of the draft. It shows:
-  1. Progress through the entire draft.
-  2. Currently drafting team.
-
-  Future state:
-  1. Show how long remains in the current draft pick.
+  The free agents panel displays the currently available players.
+  It allows the user to select a position, then view the available
+  players that play that position.
 */
 $.widget("draftapp.freeagents", {
   version: "0.1",
@@ -83,7 +80,7 @@ $.widget("draftapp.freeagents", {
         .mouseenter(self._mouseEnterAddButton)
         .mouseleave(self._mouseLeaveAddButton);
       } else {
-        button.addClass("ui-state-disabled");
+        button.addClass("ui-state-disabled").attr('disabled',true);
       }
     });
     this.agentTable.find('tr:odd').addClass('odd');

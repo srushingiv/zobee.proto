@@ -26,6 +26,7 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
   top:0;
 }
 #headerDiv, #mainDiv {
+  clear:left;
   position:relative;
   right:0px; /* gutter width */
   width:auto;
@@ -92,27 +93,27 @@ article, section, aside, hgroup, nav, header, footer, figure, figcaption {
   background: #d0e5f5 url("redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x;
 }
 
-.draftapp-freeagents-panel table {
+.draftapp-panel-content table {
   width: 100%;
 }
-.draftapp-freeagents-panel table th, .draftapp-freeagents-panel table td {
+.draftapp-panel-content table th, .draftapp-panel-content table td {
   padding:0 1em;
   vertical-align:middle;
   height:2.5em;
 }
-.draftapp-freeagents-panel table tbody tr {
+.draftapp-panel-content table tbody tr {
   border-top: 1px solid #d0e5f5;
 }
-.draftapp-freeagents-panel th .ui-icon {
+.draftapp-panel-content th .ui-icon {
   display: inline-block;
   position: relative;
   top: 0.25em;
   margin-right: 0.25em;
 }
-.draftapp-freeagents-panel table .l {
+.draftapp-panel-content table .l {
   text-align:left;
 }
-.draftapp-freeagents-panel table .r {
+.draftapp-panel-content table .r {
   text-align:right;
 }
 

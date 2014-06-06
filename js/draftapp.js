@@ -90,7 +90,7 @@
       // validate that there is room on the team
       var spotfilled = this.model.teamPlayers[this.model.currentTeam].reduce(
         function(acc,p,i) {
-          return (((p.status == 1 && active) || (p.status == 0 && !active)) && (spot == p.spot)) || acc;
+          return (p.status == (active ? 1:0) && (spot == p.spot)) || acc;
         },false);
       if (spotfilled) return false;
 
@@ -146,6 +146,20 @@
         return acc;
       },-1);
     };
+
+    this.getPlayerInTeamBySpot = function(teamid, spot, active) {
+      return this.model.teamPlayers[teamid].reduce(function(acc,p,i) {
+        if (p.spot == spot && (active ? 1 : 0) == p.status) return p;
+        return acc;
+      },null);
+    }
+
+    this.getTeamById = function(teamid) {
+      return this.model.teams.reduce(function(acc,t,i) {
+        if (t.id == teamid) return t;
+        return acc;
+      },null);
+    }
 
     this.changeView = function(teamid) {
       if (this.model.viewTeam != teamid) {
@@ -203,6 +217,7 @@
     $('#team-list').teamlist();
     $('#dashboard').dashboard({title:"FANTASY COACH DRAFT TEST"});
     $('#free-agents').freeagents();
+    $('#roster').teamroster();
   });
 
   // Log events that should eventually trigger view changes.
