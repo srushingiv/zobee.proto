@@ -61,7 +61,6 @@ $.widget("draftapp.teamroster", {
       var row = $(this).find('td:gt(0)'),
           player = window.draftapp.getPlayerInTeamBySpot(model.viewTeam, i+1, active);
       if (player) {
-        console.log(row)
         $(row[0]).text(player.name);
         $(row[1]).text(player.position);
       } else {

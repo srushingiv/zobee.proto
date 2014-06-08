@@ -29,7 +29,6 @@ $.widget("draftapp.teamlist", {
       this._refreshTeams();
 
     $(document).on('draftapp.view-team-changed', function() {
-      console.log('Should change the team being viewed to '+window.draftapp.model.viewTeam)
       self.contentDiv.find('input').attr( "checked", false )
       .filter("[value='" + window.draftapp.model.viewTeam+"']").attr( "checked", true )
       .end().button('refresh');
